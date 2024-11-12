@@ -48,3 +48,28 @@ nav{
     float:left;
     display:none;
 }
+.sec_miss1{
+    background:linear-gradient(to top right, #97c2cd, #7ec0dc);
+    list-style-type: none;
+    margin: 13px;
+    box-shadow: 3px 3px 3px rgb(227, 227, 227);
+    border-radius: 100px;
+    min-height : 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position : relative;
+    height:auto;
+    padding: 20px;
+    margin-left:100px ;
+    margin-right:100px ;
+}
+h1 {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    padding-top: 15px;
+    display :flex;
+    justify-content: center;
+}
