@@ -43,10 +43,12 @@ nav{
 }
 #sousmenu {
     text-align: center;
-    position: relative;
+    position: absolute;
     top: 100px;
     float:left;
     display:none;
+    opacity:0;
+    transition: ease 1s;
 }
 .sec_miss1{
     background:linear-gradient(to top right, #97c2cd, #7ec0dc);
@@ -73,3 +75,16 @@ h1 {
     display :flex;
     justify-content: center;
 }
+#menu li:hover #sousmenu {
+    opacity:1;
+    display: block;
+    text-align: center;
+    position: relative;
+    top: 100%;
+    float:left;
+    position : absolute;
+}
+
+/*
+https://www.w3schools.com/howto/howto_css_dropdown.asp
+*/
