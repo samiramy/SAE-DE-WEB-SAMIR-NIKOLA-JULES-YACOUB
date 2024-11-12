@@ -85,6 +85,52 @@ h1 {
     position : absolute;
 }
 
+.sec_miss2{
+
+
+}
+h3 {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    padding-top: 15px;
+    display :flex;
+    font-size: 23px;
+}
+h4 {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    padding-top: 15px;
+    display :flex;
+    font-size: 23px;;
+}
+h5 {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    padding-top: 15px;
+    display :flex;
+    font-size: 23px;;
+}
+h6 {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    padding-top: 15px;
+    display: flex;
+    font-size: 23px;;
+}
+ul{
+    font-weight: bold;
+}
+li{
+    font-weight: bold;
+}
 /*
 https://www.w3schools.com/howto/howto_css_dropdown.asp
 */
