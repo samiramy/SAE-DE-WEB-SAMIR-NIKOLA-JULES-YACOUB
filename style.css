@@ -135,7 +135,7 @@ strong{
   padding: 5px;
   color:white;
   border-radius: 10px;
-  background-color: #03588C;
+  background-color: #97c2cd;
   grid-column-start: 2;
   grid-column-end: 4;
 
@@ -160,8 +160,8 @@ ul a{
        left: 0;
        width: 100%;
        display: flex;
-       background-color: #03588C;
-       color: white;
+       background-color: #97c2cd;
+       color: #1b687c;
        padding: 10px;
        font-size: 0.9rem;
        justify-content: space-evenly;
@@ -191,8 +191,7 @@ footer{
   left: 0;
   width: 100%;
   display: flex;
-  background-image: url('assets/fond_texte.png');
-  background-color: #03588C;
+  background-color: #97c2cd;
   color: #1b687c;
   padding: 10px;
   font-size: 0.9rem;
