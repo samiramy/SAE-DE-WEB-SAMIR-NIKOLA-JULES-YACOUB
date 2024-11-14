@@ -196,7 +196,7 @@ table{
     padding-top: 0;
 
 }
-#organisation_texte{
+#organisation_texte {
     display: flex;
     align-items:center;
     justify-content: space-evenly;
