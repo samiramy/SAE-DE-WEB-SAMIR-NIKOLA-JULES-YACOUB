@@ -1,5 +1,11 @@
+
+
+
+
+
 html{
     font-family:Calibri, Helvetica, Serif;
+    background-color: rgba(186, 214, 225, 0.51);
 }
 #menu {
     display: flex;
@@ -52,6 +58,7 @@ nav{
     box-shadow: 3px 3px 3px rgba(227, 227, 227, 0.5);
     border-radius: 10px;
     width: 200px;
+    z-index: 1;
 }
 .sec_miss1{
     background:linear-gradient(to top right, #97c2cd, #7ec0dc);
@@ -142,4 +149,19 @@ ul{
 }
 li{
     font-weight: bold;
+}
+#titreM3{
+    background-image:url("assets/fond_de_titre.png");
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.97);
+    width: 100%;
+    box-shadow: 3px 3px 3px rgb(159, 159, 159);
+    backdrop-filter: blur(10px);
+    font-family:"kanit", sans-serif;
+    height:300px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    background-position-y: -80px;
 }
