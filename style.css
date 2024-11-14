@@ -198,3 +198,13 @@ footer{
   justify-content: space-evenly;
 }
 
+h5{
+  text-align: center;
+  align-content: center;
+}
+
+#atable {
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
