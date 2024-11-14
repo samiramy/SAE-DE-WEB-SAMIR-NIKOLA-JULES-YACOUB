@@ -17,7 +17,7 @@ html{
     padding-left: 5px;
     box-shadow: 3px 3px 3px rgb(227, 227, 227);
     border-radius: 100px;
-    width:60%
+    width:60%;
 }
 #logo-nav {
 height:130px
@@ -108,15 +108,7 @@ h1 {
 
 
 }
-h3 {
-    border: 1px solid rgba(128, 128, 128, 0.3);
-    border-right: none;
-    border-left: none;
-    border-bottom: none;
-    padding-top: 15px;
-    display :flex;
-    font-size: 23px;
-}
+
 h4 {
     border: 1px solid rgba(128, 128, 128, 0.3);
     border-right: none;
@@ -125,6 +117,11 @@ h4 {
     padding-top: 15px;
     display :flex;
     font-size: 23px;;
+    color: rgba(21, 71, 87, 0.3);
+    align-items: center;
+    justify-content: center;
+    background:linear-gradient(to top , #b6d3da, #98bac3);
+    box-shadow: 3px 3px 3px rgba(136, 136, 136, 0.48);
 }
 h5 {
     border: 1px solid rgba(128, 128, 128, 0.3);
@@ -133,7 +130,8 @@ h5 {
     border-bottom: none;
     padding-top: 15px;
     display :flex;
-    font-size: 23px;;
+    font-size: 23px;
+
 }
 h6 {
     border: 1px solid rgba(128, 128, 128, 0.3);
@@ -143,12 +141,6 @@ h6 {
     padding-top: 15px;
     display: flex;
     font-size: 23px;;
-}
-ul{
-    font-weight: bold;
-}
-li{
-    font-weight: bold;
 }
 #titreM3{
     background-image:url("assets/fond_de_titre.png");
@@ -164,4 +156,27 @@ li{
     justify-content: center;
     margin:0;
     background-position-y: -80px;
+    margin-bottom: 5px;
+}
+.bloquedetexte {
+    width: 50%;
+    background:linear-gradient(to top , #98acc3, #8d9fb3);
+    color: white;
+    padding: 3px;
+    border: 1px solid white;
+    margin: 5px;
+    position: relative;
+    box-shadow: 3px 3px 3px rgba(227, 227, 227, 0.5);
+    height: 200px;
+    font-size: 16px;
+    padding-top: 0;
+
+}
+#organisation_texte{
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
+}
+#log_pharm{
+   max-height: 70px;
 }
