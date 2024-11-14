@@ -92,7 +92,10 @@ h1 {
     border-radius: 5px;
     display:block;
 }
-
+#sousmenu a {
+    text-decoration: none;
+    color:inherit;
+}
 
 .sec_miss2{
 
