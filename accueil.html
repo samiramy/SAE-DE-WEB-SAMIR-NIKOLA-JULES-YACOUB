@@ -3,41 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Accueil</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="img/logokdou.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logokdou.ico">
 </head>
 <body>
 
 <nav>
-  <a href="accueil.html">Accueil</a>
-  <div class="menu">
-    <a>Travail sur KDou</a>
-    <div class="contenu_menu">
-      <a href="mission1">Mission 1</a>
-      <a href="mission2">Mission 2</a>
-      <a href="mission3">Mission 3</a>
-    </div>
-  </div>
-  <a href="bilan.html">Bilan de rapport</a>
+  <img id="logo-nav" src="assets/logo.png" alt="logo">
+  <ul id="menu">
+    <li>
+      Bilan des missions
+      <ul id="sousmenu">
+        <li><a href="mission_1.html">Mission 1</a> </li>
+        <li><a href="mission2.html">Mission 2</a></li>
+        <li><a href="mission_3.html">Mission 3</a></li>
+      </ul>
+    </li>
+    <li>
+      bilan de rapport
+    </li>
+  </ul>
 </nav>
 
 <h1>Bienvenue sur notre site !</h1>
 <h3>Vous trouverez l'ensemble de notre travail sur la saé s1-04</h3>
 
 <main class="grille">
-  <img src="img/logokdou%20(400).jpeg" alt="logoKDOU" >
+  <img src="logokdou%20(400).jpeg" alt="logoKDOU" >
   <article>
     <h2> Le contexte générale :</h2>
     <p><strong>Kdou</strong>, une entreprise fictive d'import/export alimentaire, fait appel à nous dans le but d'exploiter sa <strong>base de données</strong> pour améliorer le fonctionnement et l'image de l'entreprise.</p>
     <p>Durant les missions, nous avons travaillé sur deux logiciels :</p>
     <ul>
-      <li><a href="mission1">Mission 1 :</a></li>
+      <li><a href="mission_1.html">Mission 1 :</a></li>
       <ul>
         <li><strong>Excel®</strong>, un tableur et non un
           <abbr title="Système de Gestion de Base de Données">SGBD</abbr>
           à propement parlé.</li>
       </ul>
-      <li><a href="mission2">Mission 2 :</a></li>
+      <li><a href="mission2.html">Mission 2 :</a></li>
       <ul>
         <li><strong>Access®</strong>, un "vrai" SGBD, centré sur le <abbr title="Query By Exemple">QBE</abbr>.</li>
       </ul>
