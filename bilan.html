@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html lang="fr" >
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-  <title>Bilan</title>
-  <link rel="stylesheet" href="stylebilan.css">
-  <link rel="icon" href="logokdou.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0"> <!--la page s'adapte a la taille de l'ecran et apparait sans zoom-->
+  <title>Acceuil</title>
+  <link rel="icon" href="assets\logo.png" type="image/png">
+  <link rel="stylesheet" href="charte_graphique.css"> <!-- Lien vers la feuille de style -->
 </head>
 <body>
+<header>
+  <nav>
+    <img id="logo-nav" src="assets/logo.png" alt="logo">
+    <ul id="menu">
+      <li>
+        <a href="accueil.html">Acceuil</a>
+      </li>
+      <li>
+        Bilan des missions
+        <ul id="sousmenu">
+          <li><a href="mission_1.html">Mission 1</a> </li>
 
-<nav>
-  <a href="accueil.html">Accueil</a>
-  <div class="menu">
-    <a>Travail sur KDou</a>
-    <div class="contenu_menu">
-      <a href="mission_1.html">Mission 1</a>
-      <a href="mission2.html">Mission 2</a>
-      <a href="mission3">Mission 3</a>
-    </div>
-  </div>
-  <a href="bilan.html">Bilan de rapport</a>
-</nav>
+          <li><a href="mission2.html">Mission 2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="bilan.html">Bilan</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 <h1>Notre bilan général</h1>
-<article>
+<article class="conception">
   <h2>Au final, nous avons énormément appris des missions :</h2>
   <ul>
     <li> Notamment en SQL, que se soit sur le codage pur mais aussi au niveau algébrique et théorique. Le niveau général des missions nous a semblé bien dosé et en adéquation avec les TPs, tout en allant un peu plus loin. De plus, avant l'IUT, nous étions plutôt réticent vis-à-vis du travail autour des bases de données, mais aujourd'hui cela nous plaît particulièrement et nous envisageons même des perspectives d'avenir dans le domaine.</li>
