@@ -36,15 +36,15 @@
 <h1 id="titreM3">Mission 3</h1>
 <article id="organisation_texte">
   <div class="bloquedetexte">
-<h2 >
-  Resumé de l'exercice
-</h2>
- <strong> L'objectif de cette mission</strong> est d'exploiter la base de données de l'entreprise KDou pour analyser les données relatives à leurs produits, fournisseurs, clients et ventes.<br> KDou souhaite obtenir des indicateurs clés pour mieux comprendre ses ventes, ses produits, ses fournisseurs et ses clients, notamment en ce qui concerne les catégories de produits,<br> la performance de ses fournisseurs, les remises accordées, et la provenance des produits.
-    </div>
+    <h2 >
+      Resumé de l'exercice
+    </h2>
+    <strong> L'objectif de cette mission</strong> est d'exploiter la base de données de l'entreprise KDou pour analyser les données relatives à leurs produits, fournisseurs, clients et ventes.<br> KDou souhaite obtenir des indicateurs clés pour mieux comprendre ses ventes, ses produits, ses fournisseurs et ses clients, notamment en ce qui concerne les catégories de produits,<br> la performance de ses fournisseurs, les remises accordées, et la provenance des produits.
+  </div>
   <div class="bloquedetexte">
-  <h3>   Points clés de l'exercice :</h3>
+    <h3>   Points clés de l'exercice :</h3>
     <ul>
-Manipulation de données sur les produits, les fournisseurs et les commandes.<br>
+      Manipulation de données sur les produits, les fournisseurs et les commandes.<br>
       <li><strong>Création de requêtes SQL:</strong> pour répondre à des questions spécifiques sur les ventes, les catégories de produits, et les relations avec les clients et les fournisseurs.<br></li>
       <li><strong>Objectif final</strong> : aider l’entreprise KDou à mieux comprendre ses performances commerciales et à ajuster son offre en fonction des besoins identifiés dans les analyses.<br>
         Les requêtes SQL devront fournir des réponses concrètes aux questions posées par KDou, comme le chiffre d'affaires par catégorie de produits, l'analyse des fournisseurs non sollicités, l’étude des remises accordées aux clients, et bien d’autres.<br></li></ul>
@@ -62,13 +62,17 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître</td>
-      <td>il y'a 5 produiits 50€ qui correspondent <br>
+      <td>SELECT : Récupère les colonnes PrixUnit, Pays, NomProd, et NomCateg.<br>
+        FROM : Définit les tables et crée des alias (C pour Client, Cat pour Categorie, P pour Produit).<br>
+        INNER JOIN : Effectue des jointures internes entre les tables Client, Categorie, et Produit sur leurs clés respectives.<br>
+        GROUP BY : Regroupe les résultats par les colonnes spécifiées.<br>
+        HAVING : Filtre les résultats pour afficher uniquement les enregistrements avec un PrixUnit supérieur ou égal à 50 et un NomCateg contenant "dess" ou "boiss".</td>
       <td>SELECT P.PrixUnit, C.Pays, P.NomProd, Cat.NomCateg<br>
-      FROM Client AS C, Categorie AS Cat INNER JOIN Produit AS P ON
-      Cat.CodeCateg = P.CodeCateg<br>
-      GROUP BY P.PrixUnit, C.Pays, P.NomProd, Cat.NomCateg<br>
-      HAVING (((P.PrixUnit)>=50) AND ((Cat.NomCateg) Like "dess*" Or (Cat.NomCateg)<br>
-      Like "boiss*"));</td>
+        FROM Client AS C, Categorie AS Cat INNER JOIN Produit AS P ON
+        Cat.CodeCateg = P.CodeCateg<br>
+        GROUP BY P.PrixUnit, C.Pays, P.NomProd, Cat.NomCateg<br>
+        HAVING (((P.PrixUnit)>=50) AND ((Cat.NomCateg) Like "dess*" Or (Cat.NomCateg)<br>
+        Like "boiss*"));</td>
       <td><img src="assets/mission3_1.png"></td>
     </tr>
     </tbody>
@@ -85,11 +89,14 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels sont les pays de provenance de ces catégories ?</td>
-      <td>L'allemagne l australie le bresil le canada le danemark l'espagne les etats unis la finlande la france l'italie le japon la norvege les pays bas le royaume uni ,Singapour et la suede sont la totalité des pays dee provenance des produits </td>
+      <td>SELECT : Récupère les colonnes NomCateg de Categorie et Pays de Fournisseur.<BR>
+        FROM : Définit les tables Categorie (avec l'alias Cat) et Fournisseur (avec l'alias F).<Br>
+        GROUP BY : Regroupe les résultats par NomCateg et Pays.<br>
+        HAVING : Filtre les résultats pour n'afficher que les catégories dont le nom commence par "boiss" ou "dess".</td>
       <td>SELECT Cat.NomCateg, F.Pays
-      FROM Categorie AS Cat, Fournisseur AS F
-      GROUP BY Cat.NomCateg, F.Pays
-      HAVING (((Cat.NomCateg) Like "boiss*" Or (Cat.NomCateg) Like "dess*"));></td>
+        FROM Categorie AS Cat, Fournisseur AS F
+        GROUP BY Cat.NomCateg, F.Pays
+        HAVING (((Cat.NomCateg) Like "boiss*" Or (Cat.NomCateg) Like "dess*"));></td>
       <td><img src="assets/Mission3_2.png"></td>
     </tr>
     </tbody>
@@ -106,20 +113,24 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas vendus</td>
-      <td>On cherche les fournisseurs qui proposent des produits qui ne sont pas
-        commandés, on peut donc les trouver si on fait une différence (NOT IN) entre
-        RefProd dans la table Produits et RefProd dans la table DetailCommande. Ensuite
-        on joint NoFour, sélectionné lors de cette différence, avec NoFour de Fournisseurs.
+      <td>Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
+        commandés actuellement ? </td>
+      <td><strong>SELECT</strong> : Récupère les colonnes Societe, Contact, et Pays de la table Fournisseur.<br>
+        <strong> FROM </strong>: Définit la table Fournisseur avec l'alias F.<br>
+        <strong>INNER JOIN </strong> Utilise une sous-requête (nommée R) qui récupère les fournisseurs (NoFour) des produits qui n'ont pas de référence (RefProd) dans DetailCommande.<br>
+        <strong>Sous-requête (R)</strong> :<br>
+        <strong>SELECT DISTINCT </strong>P.NoFour : Récupère uniquement les valeurs distinctes de NoFour dans Produit.<br>
+        <strong>WHERE </strong> NOT IN (...) : Filtre pour inclure seulement les produits dont RefProd n'existe pas dans la table DetailCommande, signifiant qu'ils n'ont pas été commandés.<br>
+        <strong>ON </strong> = R.NoFour : Associe les fournisseurs aux résultats de la sous-requête en fonction de leur numéro (NoFour).</td>
 
       <td>SELECT F.Societe, F.Contact, F.Pays
-      FROM Fournisseur AS F
-      INNER JOIN (
-      SELECT DISTINCT P.NoFour
-      FROM Produit AS P
-      WHERE P.RefProd NOT IN (SELECT D.RefProd FROM DetailCommande AS D)
-      ) AS R ON F.NoFour = R.NoFour;
-    </td>
+        FROM Fournisseur AS F
+        INNER JOIN (
+        SELECT DISTINCT P.NoFour
+        FROM Produit AS P
+        WHERE P.RefProd NOT IN (SELECT D.RefProd FROM DetailCommande AS D)
+        ) AS R ON F.NoFour = R.NoFour;
+      </td>
       <td><img src="assets/ind21.png"></td>
     </tr>
     </tbody>
@@ -135,11 +146,19 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Quels fournisseurs vendent unquiment des boissons et des desserts</td>
-      <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
-        d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
-      <td><img src="assets/rsK.jpg"></td>
-      <td><img src="assets/qbk.jpg"></td>
+      <td>Combien y –a-t-il de produits non commandés par catégorie ?</td>
+      <td> <strong>SELECT</strong>: Récupère NomCateg de la table Categorie et compte le nombre de CodeCateg dans Produit, renommé ici sous l'alias CompteDeCodeCateg.<br>
+        <strong>FROM</strong> : Utilise la table Categorie.<br>
+        <strong>INNER JOIN </strong>: Effectue une jointure interne avec la table Produit sur la clé CodeCateg.<br>
+        <strong>LEFT JOIN </strong>: Effectue une jointure externe (gauche) avec la table DetailCommande sur la clé RefProd pour inclure tous les produits, même ceux sans commande.<br>
+        <strong> GROUP BY </strong>: Regroupe les résultats par NomCateg et le numéro de commande NoCom de DetailCommande.<br>
+        <strong> HAVING </strong>: Filtre les résultats pour n'afficher que les catégories où NoCom est NULL, c'est-à-dire les produits sans commandes associées.</td>
+      <td>SELECT Categorie.NomCateg, Count(Produit.CodeCateg) AS CompteDeCodeCateg
+        FROM (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) LEFT JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd
+        GROUP BY Categorie.NomCateg, DetailCommande.NoCom
+        HAVING (((DetailCommande.NoCom) Is Null));
+      </td>
+      <td><img src="assets/rs2a.jpg"></td>
     </tr>
     </tbody>
   </table>
@@ -157,7 +176,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tr>
       <td>Pour l’Allemagne pays proche, quels sont les desserts ou boissons vendus à moins
         de 100 euros ? </td>
-      <td></td>
+      <td>On selectionne donc les informations des produits de la jointure entre produits, catégories et fournisseurs où la catégorie est boissons ou desserts et le pas Allemagne.</td>
       <td><img src="assets/sql21.jpg"></td>
       <td><img src="assets/rs21.jpg"></td>
     </tr>
@@ -175,7 +194,9 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels fournisseurs vendent uniquement des boissons ou des desserts ?</td>
-      <td></td>
+      <td> Les fournisseurs qui ne vendent que des boissons ou des desserts ne sont donc pas
+        dans la table des fournisseurs qui vendent exclusivement autre chose, on les trouve
+        avec une différence (NOT IN) entre ces deux tables.</td>
       <td><img src="assets/sql22.jpg"></td>
       <td><img src="assets/rs22.jpg"></td>
     </tr>
@@ -193,7 +214,9 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-       <td> enoncé a completer </td>
+      <td> Un client nantais Le verre à soi souhaite savoir quels autres clients nantais
+        commandent aussi des produits en Allemagne pour envisager de futures livraisons
+        groupées. </td>
       <td>Les clients nantais qui prennent commande en allemagne sont : Pedro’s House et la
         Table nantaise. (l entreprise verre a soi n y figure pas)</td>
       <td>SELECT DISTINCT Client.SocieteCli, Client.Villecli
@@ -218,7 +241,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels sont couples de clients de Besançon pourrait on créer ?</td>
-      <td></td>
+      <td>On effectue une auto-jointure sur la table Client pour identifier toutes les paires de clients situés à Besançon, en tenant compte des variations de l’écriture du nom de la ville. La condition A.CodeCli < B.CodeCli garantit que chaque paire est unique (sans doublons inversés). Le résultat affiche les noms des sociétés (SocieteCli) des deux clients pour chaque paire trouvée.</td>
       <td><img src="assets/sql31.jpg"></td>
       <td><img src="assets/rs31.jpg"></td>
     </tr>
@@ -235,4 +258,5 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
   <img id="pariscité" src="assets/logo-paris.png" alt="université">
 </footer>
 </html>
+
 
