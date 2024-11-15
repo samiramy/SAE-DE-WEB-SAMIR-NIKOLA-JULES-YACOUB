@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0"> <!--la page s'adapte a la taille de l'ecran et apparait sans zoom-->
   <title>Acceuil</title>
-  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="icon" href="assets\logo.png" type="image/png">
   <link rel="stylesheet" href="charte_graphique.css"> <!-- Lien vers la feuille de style -->
 </head>
 <body>
@@ -136,16 +136,10 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels fournisseurs vendent unquiment des boissons et des desserts</td>
-      <td> On cherche donc le nombre de produits par pays fournisseur et on peut dire que
-        le Royaume-Uni et l’Allemagne ont une offre plutôt importante de produits, la notion
-        étant assez large on aurait pu afficher les trois premiers pays ou encore ceux dont le
-        nombre est supérieur à 10.</td>
-      <td> SELECT F.Pays, COUNT(P.RefProd) AS [Nombre Produits]
-        FROM Fournisseur F LEFT JOIN Produit P ON F.NoFour=P.NoFour
-        GROUPBYF.Pays
-        ORDERBYCOUNT(P.RefProd) DESC;
-      </td>
-      <td><img src="assets/ind22.PNG"></td>
+      <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
+        d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
+      <td><img src="assets/rsK.jpg"></td>
+      <td><img src="assets/qbk.jpg"></td>
     </tr>
     </tbody>
   </table>
@@ -163,7 +157,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tr>
       <td>Pour l’Allemagne pays proche, quels sont les desserts ou boissons vendus à moins
         de 100 euros ? </td>
-      <td>On selectionne donc les informations des produits de la jointure entre produits, catégories et fournisseurs où la catégorie est boissons ou desserts et le pas Allemagne.</td>
+      <td></td>
       <td><img src="assets/sql21.jpg"></td>
       <td><img src="assets/rs21.jpg"></td>
     </tr>
@@ -181,9 +175,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels fournisseurs vendent uniquement des boissons ou des desserts ?</td>
-      <td> Les fournisseurs qui ne vendent que des boissons ou des desserts ne sont donc pas
-        dans la table des fournisseurs qui vendent exclusivement autre chose, on les trouve
-        avec une différence (NOT IN) entre ces deux tables.</td>
+      <td></td>
       <td><img src="assets/sql22.jpg"></td>
       <td><img src="assets/rs22.jpg"></td>
     </tr>
@@ -201,9 +193,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-       <td> Un client nantais Le verre à soi souhaite savoir quels autres clients nantais
-         commandent aussi des produits en Allemagne pour envisager de futures livraisons
-         groupées. </td>
+       <td> enoncé a completer </td>
       <td>Les clients nantais qui prennent commande en allemagne sont : Pedro’s House et la
         Table nantaise. (l entreprise verre a soi n y figure pas)</td>
       <td>SELECT DISTINCT Client.SocieteCli, Client.Villecli
@@ -228,7 +218,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels sont couples de clients de Besançon pourrait on créer ?</td>
-      <td>On effectue une auto-jointure sur la table Client pour identifier toutes les paires de clients situés à Besançon, en tenant compte des variations de l’écriture du nom de la ville. La condition A.CodeCli < B.CodeCli garantit que chaque paire est unique (sans doublons inversés). Le résultat affiche les noms des sociétés (SocieteCli) des deux clients pour chaque paire trouvée.</td>
+      <td></td>
       <td><img src="assets/sql31.jpg"></td>
       <td><img src="assets/rs31.jpg"></td>
     </tr>
