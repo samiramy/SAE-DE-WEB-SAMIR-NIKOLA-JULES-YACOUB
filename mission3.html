@@ -106,11 +106,21 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Quelle est la fonction de contact fournisseur la plus représentée ?</td>
-      <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
-        d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
-      <td><img src="assets/rsK.jpg"></td>
-      <td><img src="assets/qbk.jpg"></td>
+      <td>Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas vendus</td>
+      <td>On cherche les fournisseurs qui proposent des produits qui ne sont pas
+        commandés, on peut donc les trouver si on fait une différence (NOT IN) entre
+        RefProd dans la table Produits et RefProd dans la table DetailCommande. Ensuite
+        on joint NoFour, sélectionné lors de cette différence, avec NoFour de Fournisseurs.
+
+      <td>SELECT F.Societe, F.Contact, F.Pays
+      FROM Fournisseur AS F
+      INNER JOIN (
+      SELECT DISTINCT P.NoFour
+      FROM Produit AS P
+      WHERE P.RefProd NOT IN (SELECT D.RefProd FROM DetailCommande AS D)
+      ) AS R ON F.NoFour = R.NoFour;
+    </td>
+      <td><img src="assets/ind21.png"></td>
     </tr>
     </tbody>
   </table>
@@ -125,7 +135,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Quelle est la fonction de contact fournisseur la plus représentée ?</td>
+      <td>Quels fournisseurs vendent unquiment des boissons et des desserts</td>
       <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
         d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
       <td><img src="assets/rsK.jpg"></td>
