@@ -210,26 +210,8 @@ h1 {
     background-size: cover;
 }
 
-h2, h1 {
-    text-decoration: underline;
-    text-decoration-color: #03588C;
-}
 
-main h2 {
-    text-decoration: underline;
-    text-decoration-color: orange;
-}
 
-abbr {
-    color: orange;
-    font-style: italic;
-    font-weight: bold;
-}
-
-strong {
-    font-weight: bold;
-    color: #41c649;
-}
 
 .grille {
     display: grid;
@@ -253,11 +235,6 @@ strong {
     grid-column-end: 4;
 }
 
-ul a {
-    color: orange;
-    text-decoration: none;
-    font-weight: bold;
-}
 
 @media (max-width: 870px) {
     .grille {
@@ -313,4 +290,7 @@ footer {
     .conception {flex-direction: column}
 
 
+}
+td{
+    border: #dddddd 1px solid;
 }
