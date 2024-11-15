@@ -1,8 +1,14 @@
 
 
+a:visited {
+        text-decoration: none;
+        text-color:inherit;
+}
 
-
-
+a{
+    text-decoration: none;
+    text-color:inherit;
+}
 html{
     font-family:Calibri, Helvetica, Serif;
     background-color: rgba(186, 214, 225, 0.51);
