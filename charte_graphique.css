@@ -9,7 +9,7 @@ a {
 }
 
 html {
-    font-family: Calibri, Helvetica, serif;
+    font-family: Calibri, Helvetica, Serif;
     background-color: rgba(186, 214, 225, 0.51);
 }
 
@@ -47,6 +47,7 @@ nav {
 #menu li {
     margin-right: 10px;
     color: #0f5061;
+    font-size: 16px;
     padding: 3px;
     list-style-type: none;
     transition: background-color 0.5s;
@@ -328,15 +329,3 @@ td{
             padding-top: 0;
         }
     }
-
-abbr{
-    font-style: italic;
-    font-weight: bold;
-    color:orange;
-}
-
-
-
-.vert{
-    color:#41c649;
-}
