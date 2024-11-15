@@ -46,13 +46,14 @@ nav {
 
 #menu li {
     margin-right: 10px;
-    color: #1b687c;
+    color: #0f5061;
     font-size: 16px;
     padding: 3px;
     list-style-type: none;
     transition: background-color 0.5s;
     user-select: none;
     border-radius: 60px;
+    font-size: 18px;
 }
 
 #menu li:hover {
