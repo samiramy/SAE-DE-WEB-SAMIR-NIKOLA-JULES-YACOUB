@@ -61,12 +61,15 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître
-        avec leur pays d’origine.</td>
-      <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
-        d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
-      <td><img src="assets/rsK.jpg"></td>
-      <td><img src="assets/qbk.jpg"></td>
+      <td>Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître</td>
+      <td>il y'a 5 produiits 50€ qui correspondent <br>
+      <td>SELECT P.PrixUnit, C.Pays, P.NomProd, Cat.NomCateg<br>
+      FROM Client AS C, Categorie AS Cat INNER JOIN Produit AS P ON
+      Cat.CodeCateg = P.CodeCateg<br>
+      GROUP BY P.PrixUnit, C.Pays, P.NomProd, Cat.NomCateg<br>
+      HAVING (((P.PrixUnit)>=50) AND ((Cat.NomCateg) Like "dess*" Or (Cat.NomCateg)<br>
+      Like "boiss*"));</td>
+      <td><img src="assets/mission3_1.png"></td>
     </tr>
     </tbody>
   </table>
@@ -81,11 +84,13 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Quelle est la fonction de contact fournisseur la plus représentée ?</td>
-      <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
-        d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
-      <td><img src="assets/rsK.jpg"></td>
-      <td><img src="assets/qbk.jpg"></td>
+      <td>Quels sont les pays de provenance de ces catégories ?</td>
+      <td>a completer </td>
+      <td>SELECT Cat.NomCateg, F.Pays
+      FROM Categorie AS Cat, Fournisseur AS F
+      GROUP BY Cat.NomCateg, F.Pays
+      HAVING (((Cat.NomCateg) Like "boiss*" Or (Cat.NomCateg) Like "dess*"));></td>
+      <td><img src="assets/Mission3_2.png"></td>
     </tr>
     </tbody>
   </table>
@@ -218,33 +223,3 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
 </footer>
 </html>
 
-
-<div>
-  <table>
-    <caption>Indicateur I</caption>
-    <thead>
-    <th> Enoncé </th>
-    <th> Construction</th>
-    <th> SQL </th>
-    <th> Résultat </th>
-    </thead>
-    <td>Quelles sont les dates des commandes du client Max Deschamps ?</td>
-    <td>Nous avons ici toutes les commandes du client Max Deschamps, pour le trouver nous avons du rechercher  le contact client Max</td>
-    <td><img src="assets/rsi.jpg"></td>
-    <td><img src="assets/qbi.jpg"></td>
-</div>
-
-<div>
-  <table>
-    <caption>Indicateur I</caption>
-    <thead>
-    <th> Enoncé </th>
-    <th> Construction</th>
-    <th> SQL </th>
-    <th> Résultat </th>
-    </thead>
-    <td>Quelles sont les dates des commandes du client Max Deschamps ?</td>
-    <td>Nous avons ici toutes les commandes du client Max Deschamps, pour le trouver nous avons du rechercher  le contact client Max</td>
-    <td><img src="assets/rsi.jpg"></td>
-    <td><img src="assets/qbi.jpg"></td>
-</div>
