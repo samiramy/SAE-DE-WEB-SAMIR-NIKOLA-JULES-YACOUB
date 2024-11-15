@@ -312,4 +312,20 @@ td{
         height: 200px;
         font-size: 12px;
         padding-top: 0;
+    }
 }
+    @media (max-width: 900px) {
+        .bloquedetexte {
+            width: 50%;
+            background: linear-gradient(to top, #98acc3, #8d9fb3);
+            color: white;
+            padding: 3px;
+            border: 1px solid white;
+            margin: 5px;
+            position: relative;
+            box-shadow: 3px 3px 3px rgba(227, 227, 227, 0.5);
+            height: 200px;
+            font-size: 8px;
+            padding-top: 0;
+        }
+    }

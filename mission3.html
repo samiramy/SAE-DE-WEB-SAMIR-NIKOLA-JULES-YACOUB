@@ -85,7 +85,7 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels sont les pays de provenance de ces catégories ?</td>
-      <td>a completer </td>
+      <td>L'allemagne l australie le bresil le canada le danemark l'espagne les etats unis la finlande la france l'italie le japon la norvege les pays bas le royaume uni ,Singapour et la suede sont la totalité des pays dee provenance des produits </td>
       <td>SELECT Cat.NomCateg, F.Pays
       FROM Categorie AS Cat, Fournisseur AS F
       GROUP BY Cat.NomCateg, F.Pays
@@ -184,11 +184,16 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Quelle est la fonction de contact fournisseur la plus représentée ?</td>
-      <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
-        d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
-      <td><img src="assets/rsK.jpg"></td>
-      <td><img src="assets/qbk.jpg"></td>
+       <td> enoncé a completer </td>
+      <td>Les clients nantais qui prennent commande en allemagne sont : Pedro’s House et la
+        Table nantaise. (l entreprise verre a soi n y figure pas)</td>
+      <td>SELECT DISTINCT Client.SocieteCli, Client.Villecli
+        FROM Client INNER JOIN (Commande INNER JOIN (Fournisseur INNER JOIN (Produit
+        INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON
+        Fournisseur.NoFour = Produit.NoFour) ON Commande.NoCom = DetailCommande.NoCom)
+        ON Client.CodeCli = Commande.CodeCli
+        WHERE Client.Villecli="Nantes" AND Client.SocieteCli <>"Verre à soi"></td>
+      <td><img src=assets/Mission3-43.png></td>
     </tr>
     </tbody>
   </table>
