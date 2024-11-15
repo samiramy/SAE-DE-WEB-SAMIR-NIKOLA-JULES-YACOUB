@@ -62,7 +62,11 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître</td>
-      <td>il y'a 5 produiits 50€ qui correspondent <br>
+      <td>SELECT : Récupère les colonnes PrixUnit, Pays, NomProd, et NomCateg.<br>
+        FROM : Définit les tables et crée des alias (C pour Client, Cat pour Categorie, P pour Produit).<br>
+        INNER JOIN : Effectue des jointures internes entre les tables Client, Categorie, et Produit sur leurs clés respectives.<br>
+        GROUP BY : Regroupe les résultats par les colonnes spécifiées.<br>
+        HAVING : Filtre les résultats pour afficher uniquement les enregistrements avec un PrixUnit supérieur ou égal à 50 et un NomCateg contenant "dess" ou "boiss".</td>
       <td>SELECT P.PrixUnit, C.Pays, P.NomProd, Cat.NomCateg<br>
       FROM Client AS C, Categorie AS Cat INNER JOIN Produit AS P ON
       Cat.CodeCateg = P.CodeCateg<br>
@@ -85,7 +89,10 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tbody>
     <tr>
       <td>Quels sont les pays de provenance de ces catégories ?</td>
-      <td>L'allemagne l australie le bresil le canada le danemark l'espagne les etats unis la finlande la france l'italie le japon la norvege les pays bas le royaume uni ,Singapour et la suede sont la totalité des pays dee provenance des produits </td>
+      <td>SELECT : Récupère les colonnes NomCateg de Categorie et Pays de Fournisseur.<BR>
+        FROM : Définit les tables Categorie (avec l'alias Cat) et Fournisseur (avec l'alias F).<Br>
+        GROUP BY : Regroupe les résultats par NomCateg et Pays.<br>
+        HAVING : Filtre les résultats pour n'afficher que les catégories dont le nom commence par "boiss" ou "dess".</td>
       <td>SELECT Cat.NomCateg, F.Pays
       FROM Categorie AS Cat, Fournisseur AS F
       GROUP BY Cat.NomCateg, F.Pays
@@ -106,11 +113,15 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas vendus</td>
-      <td>On cherche les fournisseurs qui proposent des produits qui ne sont pas
-        commandés, on peut donc les trouver si on fait une différence (NOT IN) entre
-        RefProd dans la table Produits et RefProd dans la table DetailCommande. Ensuite
-        on joint NoFour, sélectionné lors de cette différence, avec NoFour de Fournisseurs.
+      <td>Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
+        commandés actuellement ? </td>
+      <td><strong>SELECT</strong> : Récupère les colonnes Societe, Contact, et Pays de la table Fournisseur.<br>
+        <strong> FROM </strong>: Définit la table Fournisseur avec l'alias F.<br>
+        <strong>INNER JOIN </strong> Utilise une sous-requête (nommée R) qui récupère les fournisseurs (NoFour) des produits qui n'ont pas de référence (RefProd) dans DetailCommande.<br>
+        <strong>Sous-requête (R)</strong> :<br>
+        <strong>SELECT DISTINCT </strong>P.NoFour : Récupère uniquement les valeurs distinctes de NoFour dans Produit.<br>
+        <strong>WHERE </strong> NOT IN (...) : Filtre pour inclure seulement les produits dont RefProd n'existe pas dans la table DetailCommande, signifiant qu'ils n'ont pas été commandés.<br>
+        <strong>ON </strong> = R.NoFour : Associe les fournisseurs aux résultats de la sous-requête en fonction de leur numéro (NoFour).</td>
 
       <td>SELECT F.Societe, F.Contact, F.Pays
       FROM Fournisseur AS F
@@ -135,11 +146,19 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-      <td>Quels fournisseurs vendent unquiment des boissons et des desserts</td>
-      <td>La fonction du contact fournisseur la plus représentée est Chef de ventes avec 7 contacts <br> malgré qu'il y a des problèmes
-        d'écriture dans les fonctions des contacts, comme les <br>représentants ou il y a différent type d'écritures comme Representant€, Représentant(e) <br> et Représentant
-      <td><img src="assets/rsK.jpg"></td>
-      <td><img src="assets/qbk.jpg"></td>
+      <td>Combien y –a-t-il de produits non commandés par catégorie ?</td>
+      <td> <strong>SELECT</strong>: Récupère NomCateg de la table Categorie et compte le nombre de CodeCateg dans Produit, renommé ici sous l'alias CompteDeCodeCateg.<br>
+        <strong>FROM</strong> : Utilise la table Categorie.<br>
+        <strong>INNER JOIN </strong>: Effectue une jointure interne avec la table Produit sur la clé CodeCateg.<br>
+        <strong>LEFT JOIN </strong>: Effectue une jointure externe (gauche) avec la table DetailCommande sur la clé RefProd pour inclure tous les produits, même ceux sans commande.<br>
+        <strong> GROUP BY </strong>: Regroupe les résultats par NomCateg et le numéro de commande NoCom de DetailCommande.<br>
+        <strong> HAVING </strong>: Filtre les résultats pour n'afficher que les catégories où NoCom est NULL, c'est-à-dire les produits sans commandes associées.</td>
+      <td>SELECT Categorie.NomCateg, Count(Produit.CodeCateg) AS CompteDeCodeCateg
+                  FROM (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) LEFT JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd
+                  GROUP BY Categorie.NomCateg, DetailCommande.NoCom
+                  HAVING (((DetailCommande.NoCom) Is Null));
+    </td>
+      <td><img src="assets/rs2a.jpg"></td>
     </tr>
     </tbody>
   </table>
@@ -157,7 +176,11 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     <tr>
       <td>Pour l’Allemagne pays proche, quels sont les desserts ou boissons vendus à moins
         de 100 euros ? </td>
-      <td></td>
+      <td>SELECT DISTINCT : Récupère les colonnes NomCateg (nom de la catégorie), NomProd (nom du produit), Pays (pays du fournisseur), et PrixUnit (prix unitaire) en éliminant les doublons.<br>
+        FROM Fournisseur : Définit la table Fournisseur comme source principale.<br>
+        INNER JOIN (Categorie INNER JOIN Produit ...) : Fait une jointure interne entre Categorie et Produit en associant CodeCateg pour obtenir les produits et leurs catégories.<br>
+        ON Fournisseur.NoFour = Produit.NoFour : Joint ensuite Fournisseur avec Produit sur NoFour (numéro du fournisseur).<br>
+        WHERE : Filtre les résultats pour inclure seulement les produits appartenant aux catégories "Boissons" ou "Desserts" et dont le fournisseur est en Allemagne.</td>
       <td><img src="assets/sql21.jpg"></td>
       <td><img src="assets/rs21.jpg"></td>
     </tr>
@@ -193,9 +216,11 @@ Manipulation de données sur les produits, les fournisseurs et les commandes.<br
     </thead>
     <tbody>
     <tr>
-       <td> enoncé a completer </td>
-      <td>Les clients nantais qui prennent commande en allemagne sont : Pedro’s House et la
-        Table nantaise. (l entreprise verre a soi n y figure pas)</td>
+       <td> Un client nantais Le verre à soi souhaite savoir quels autres clients nantais
+         commandent aussi des produits en Allemagne pour envisager de futures livraisons
+         groupées.
+       </td>
+      <td></td>
       <td>SELECT DISTINCT Client.SocieteCli, Client.Villecli
         FROM Client INNER JOIN (Commande INNER JOIN (Fournisseur INNER JOIN (Produit
         INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON
